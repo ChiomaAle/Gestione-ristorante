@@ -1,0 +1,117 @@
+@font-face{
+    font-family: 'Rubik';
+    src: url("fonts/Rubik/Rubik-Regular.ttf") format('truetype');
+}
+
+html {
+    size: 100%, 100%;
+    font-family: Rubik, Arial, Helvetica, sans-serif;
+}
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-color: white;
+}
+
+.topnav {
+    width: 100%;
+    height: 3rem;
+    background-color: #ec5d39;
+    margin: 0;
+}
+
+.navElements{
+    margin: auto;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+}
+
+.navElements a {
+    color: #ffffff;
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    height: 2.5rem;
+    width: 11rem;
+    transition: background-color 300ms ease;
+}
+
+.navElements  a:hover {
+    background-color: #d84621;
+}
+
+.titolo{
+    text-align: center;
+}
+
+.btn-rounded{
+    border: #ec5d39 solid 1px;
+    padding: 0.7rem;
+    color: #ec5d39;
+    border-radius: 30px;
+    transition: all 0.5s ease;
+}
+
+.btn-rounded:hover{
+    background-color: #ec5d39;
+    color: white;
+}
+
+.sezioneBottoni{
+    width: max-content;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.sezioneDati{
+    width: max-content;
+    border: 1px solid #ec5d39;
+    border-radius: 20px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 5rem;
+    display: flex;    
+    flex-direction: row;
+    padding-bottom: 0px;
+}
+
+input{
+    color: #626262;
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #f64e24;
+    background: transparent;
+    outline: none;
+    height: 40px;
+}
+
+p{
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    color: #626262;
+}
+
+input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #f64e24;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    transition: all 500ms ease;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    background: #fb3200;
+}
+

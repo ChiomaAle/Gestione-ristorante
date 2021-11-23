@@ -1,0 +1,128 @@
+@font-face{
+    font-family: 'Rubik';
+    src: url("fonts/Rubik/Rubik-Regular.ttf") format('truetype');
+}
+
+html {
+    size: 100%, 100%;
+    font-family: Rubik, Arial, Helvetica, sans-serif;
+}
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-color: white;
+}
+
+.topnav {
+    width: 100%;
+    height: 3rem;
+    background-color: #ec5d39;
+    margin: 0;
+}
+
+.navElements{
+    margin: auto;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+}
+
+.navElements a {
+    color: #ffffff;
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    height: 2.5rem;
+    width: 11rem;
+    transition: background-color 300ms ease;
+}
+
+.navElements  a:hover {
+    background-color: #d84621;
+}
+
+.nomeRistorante{
+    margin: auto;
+    width: max-content;
+}
+
+.titolo{
+    text-align: center;
+}
+
+.categoriaContainer{
+    display: flex;
+    margin: auto;
+    width: max-content;
+}
+
+.categoria{
+    padding-right: 3rem;
+    font-size: 1rem;
+}
+.categoria > a{
+    color: black;
+    text-decoration: none;
+}
+
+.categoria :hover{
+    cursor: pointer;
+    color:#d84621
+}
+
+.intestazioneSezione{
+    text-align: center;
+    color: #363636;
+}
+
+.pietanza{
+    display: flex;
+    border-radius: 4px;
+    padding: 3rem, 3rem, 3rem, 3rem;
+    width: 60%;
+    margin: auto;
+}
+
+.imgPiatto{
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    width: 10rem;
+}
+
+.sezioneContatti{
+    margin: auto;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.25rem;
+    color: black;
+    width: max-content;
+}
+
+.listaContatti{
+    text-align: left;
+}
+
+.socialContainer{
+    display: flex;
+    margin: auto;
+    width: min-content;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.socialContainer > a{
+    width: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.socialContainer > a > img{
+    height: 100%;
+}

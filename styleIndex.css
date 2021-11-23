@@ -1,0 +1,128 @@
+@font-face{
+    font-family: 'Rubik';
+    src: url("fonts/Rubik/Rubik-Regular.ttf") format('truetype');
+}
+
+html {
+    size: 100%, 100%;
+    font-family: Rubik, Arial, Helvetica, sans-serif;
+}
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-color: white;
+}
+
+.topnav {
+    width: 100%;
+    height: 3rem;
+    background-color: #ec5d39;
+    margin: 0;
+}
+
+.navElements{
+    margin: auto;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+}
+
+.navElements a {
+    color: #ffffff;
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    height: 2.5rem;
+    width: 11rem;
+    transition: background-color 300ms ease;
+}
+
+.navElements  a:hover {
+    background-color: #d84621;
+}
+
+.nomeRistorante{
+    margin: auto;
+    width: max-content;
+}
+
+.titolo{
+    text-align: center;
+}
+
+.immagineMain{
+    margin: auto;
+}
+
+.immagine{
+    border-radius: 4px;
+    max-width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.sezioneStoria{
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.sezioneMappa{
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.mappa {
+    border: 1px solid black;
+    width: 75%;
+    height: 25rem;
+    margin-bottom: 5rem;
+}
+
+.sezioneContatti{
+    margin: auto;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    width: max-content;
+}
+
+.listaContatti{
+    text-align: left;
+}
+
+.socialContainer{
+    display: flex;
+    margin: auto;
+    width: min-content;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.socialContainer > a{
+    width: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.socialContainer > a > img{
+    height: 100%;
+}
+
+.bottomBar {
+    color: white;
+    margin-bottom: 0px;
+    height: 3rem;
+    background-color: #ec5d39;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
