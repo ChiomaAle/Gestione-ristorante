@@ -2,7 +2,6 @@
 <html lang="it">
     <head>
         <title>Ristorante Ristorantoso</title>
-        <meta name="viewport" content="width-device-width, initial-scale-1.0">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="stylePrenotazioni.css">
 
@@ -17,7 +16,7 @@
                 $email = $_POST['email'];
                 $posti = $_POST['posti'];
                 $data = $_POST['data'];
-                $sql = "SELECT SUM(numPosti as np) FROM db_ristorante.prenotazioni WHERE dataOra='" . $data . "';";
+                $sql = "SELECT SUM(numPosti) as np FROM db_ristorante.prenotazioni WHERE dataOra='" . $data . "';";
                 $success = false;
 
                 $result = $connection->query($sql);
