@@ -1,0 +1,15 @@
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\bin\Debug\ProgettoRistorante.exe.config
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\bin\Debug\ProgettoRistorante.exe
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\bin\Debug\ProgettoRistorante.pdb
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.csproj.AssemblyReference.cache
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.csproj.SuggestedBindingRedirects.cache
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.Form1.resources
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.Properties.Resources.resources
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.csproj.GenerateResource.cache
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.exe
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.pdb
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.Ordine.resources
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gabri\source\repos\ProgettoRistorante\ProgettoRistorante\obj\Debug\ProgettoRistorante.csproj.CopyComplete
