@@ -7,7 +7,7 @@
         }
 
         public function getOrdinazioni(){
-            $query = 'SELECT o.idTavolo, m.nomePietanza, po.quantita
+            $query = 'SELECT o.idTavolo, m.nomePietanza, po.quantita, o.idOrdinazione
                         FROM ordinazioni AS o, menu AS m, pietanzeordinate AS po
                         WHERE po.idOrdinazione = o.idOrdinazione AND m.id = po.idPietanza AND o.preparato = 0;';
 

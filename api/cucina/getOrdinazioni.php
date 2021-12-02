@@ -14,7 +14,6 @@
     $count = $output->rowCount();
     if($count > 0){
         $arrOrdinazioni = array();
-        $arrOrdinazioni['data'] = array();
 
         while($row = $output->fetch(PDO::FETCH_ASSOC)){
             extract($row);
@@ -22,10 +21,11 @@
             $ordine = array(
                 'idTavolo' => $idTavolo,
                 'nomePietanza' => $nomePietanza,
-                'quantita' => $quantita
+                'quantita' => $quantita,
+                'idOrdinazione' => $idOrdinazione
             );
 
-            array_push($arrOrdinazioni['data'], $ordine);
+            array_push($arrOrdinazioni, $ordine);
         }
 
         echo json_encode($arrOrdinazioni);
