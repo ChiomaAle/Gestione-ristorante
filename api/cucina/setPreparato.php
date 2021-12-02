@@ -14,12 +14,11 @@
     
     $dati = json_decode(file_get_contents("php://input"));
 
-    $tempoAttesa = $dati->tempoAttesa;
     $idOrdinazione = $dati->idOrdinazione;
 
-    if($ord->setTempoAttesa($tempoAttesa, $idOrdinazione)){
-        echo json_encode(array('message' => 'Tempo di attesa aggiunto!'));
+    if($ord->setPreparato($idOrdinazione)){
+        echo json_encode(array('message' => 'Ordine impostato come preparato'));
     } else {
-        echo json_encode(array('message' => 'Errore, tempo di attesa non aggiunto!'));
+        echo json_encode(array('message' => 'Errore, impossibile impostare \' ordine come preparato!'));
     }
 ?>

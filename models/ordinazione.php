@@ -17,8 +17,22 @@
             return $output;
         }
 
-        public function setTempoAttesa($tempoAttesa, $tavolo){
-            $query = 'UPDATE ordinazioni SET tempoAttesa = ' . $tempoAttesa . ' WHERE idTavolo = ' . $tavolo . ';';
+        public function setTempoAttesa($tempoAttesa, $idOrdinazione){
+            $query = 'UPDATE ordinazioni SET tempoAttesa = ' . $tempoAttesa . ' WHERE idOrdinazione = ' . $idOrdinazione . ';';
+
+            $output = $this->conn->prepare($query);
+
+            if($output->execute()){
+                return true;
+            }
+
+            print("Impossibile effettuare l'ordinazione! " . $output->error);
+
+            return false;
+        }
+
+        public function setPreparato($idOrdinazione){
+            $query = 'UPDATE ordinazioni SET preparato = 1 WHERE idOrdinazione = ' . $idOrdinazione . ';';
 
             $output = $this->conn->prepare($query);
 
