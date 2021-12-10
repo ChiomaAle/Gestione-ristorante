@@ -15,6 +15,8 @@ namespace ProgettoRistorante {
     public partial class Form1 : Form {
         private bool mouseDown = false;
         private Point lastLocation;
+        public static int TAVOLO_SELEZIONATO = 0;
+        private string orderIdSelezionato;
         HttpWebRequest richiestaApi;
 
         public Form1() {
@@ -57,7 +59,7 @@ namespace ProgettoRistorante {
         public void aggiornaPietanze() {
             listaOrdinazioni.Controls.Clear();
 
-            richiestaApi = (HttpWebRequest)WebRequest.Create(string.Format("http://localhost/sitoRistorante/api/cucina/getOrdinazioni.php"));
+            richiestaApi = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/getOrdinazioni.php"));
             richiestaApi.Method = "GET";
 
             HttpWebResponse rispostaApi = (HttpWebResponse)richiestaApi.GetResponse();
@@ -101,6 +103,31 @@ namespace ProgettoRistorante {
 
         private void updateBtn_Click(object sender, EventArgs e) {
             aggiornaPietanze();
+        }
+
+        public void aggiornaTavoloSelezionato(int nTavolo, string orderId) {
+            TAVOLO_SELEZIONATO = nTavolo;
+            orderIdSelezionato = orderId;
+            tavoloSelLabel.Visible = true;
+            tempoAttesaBox.Visible = true;
+            inviaTempoAttesaBtn.Visible = true;
+            tempoAttesaBox.Visible = true;
+            tavoloSelLabel.Text = "Tempo attesa tavolo: " + nTavolo;
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setTempoAttesa.php"));
+            req.Method = "POST";
+            req.ContentType = "applicatinon/json";
+            string json = "{\"idOrdinazione\": " + orderIdSelezionato + "," +
+                "\n\"tempoAttesa\": " + tempoAttesaBox.Value + "}";
+            byte[] postBytes = Encoding.ASCII.GetBytes(json);
+            req.ContentLength = postBytes.Length;
+
+            Stream postStream = req.GetRequestStream();
+            postStream.Write(postBytes, 0, json.Length);
+            postStream.Flush();
+            postStream.Close();
         }
     }
 }

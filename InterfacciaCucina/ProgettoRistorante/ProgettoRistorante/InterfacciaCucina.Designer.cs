@@ -27,12 +27,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.listaOrdinazioni = new System.Windows.Forms.FlowLayoutPanel();
             this.updateBtn = new System.Windows.Forms.Button();
+            this.tavoloSelLabel = new System.Windows.Forms.Label();
+            this.tempoAttesaBox = new System.Windows.Forms.NumericUpDown();
+            this.inviaTempoAttesaBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tempoAttesaBox)).BeginInit();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -78,18 +82,6 @@
             this.panel2.Size = new System.Drawing.Size(282, 60);
             this.panel2.TabIndex = 2;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(11)))));
-            this.label2.Location = new System.Drawing.Point(7, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 36);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Stato:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -101,6 +93,18 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "In servizio";
             this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(11)))));
+            this.label2.Location = new System.Drawing.Point(7, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 36);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Stato:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // listaOrdinazioni
             // 
@@ -124,12 +128,52 @@
             this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
+            // tavoloSelLabel
+            // 
+            this.tavoloSelLabel.AutoSize = true;
+            this.tavoloSelLabel.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tavoloSelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(11)))));
+            this.tavoloSelLabel.Location = new System.Drawing.Point(643, 634);
+            this.tavoloSelLabel.Name = "tavoloSelLabel";
+            this.tavoloSelLabel.Size = new System.Drawing.Size(329, 36);
+            this.tavoloSelLabel.TabIndex = 5;
+            this.tavoloSelLabel.Text = "Tempo attesa tavolo: 1";
+            this.tavoloSelLabel.Visible = false;
+            // 
+            // tempoAttesaBox
+            // 
+            this.tempoAttesaBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(122)))), ((int)(((byte)(137)))));
+            this.tempoAttesaBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tempoAttesaBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempoAttesaBox.ForeColor = System.Drawing.Color.White;
+            this.tempoAttesaBox.Location = new System.Drawing.Point(989, 641);
+            this.tempoAttesaBox.Name = "tempoAttesaBox";
+            this.tempoAttesaBox.Size = new System.Drawing.Size(65, 21);
+            this.tempoAttesaBox.TabIndex = 6;
+            this.tempoAttesaBox.Visible = false;
+            // 
+            // inviaTempoAttesaBtn
+            // 
+            this.inviaTempoAttesaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(122)))), ((int)(((byte)(137)))));
+            this.inviaTempoAttesaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inviaTempoAttesaBtn.Location = new System.Drawing.Point(1074, 634);
+            this.inviaTempoAttesaBtn.Name = "inviaTempoAttesaBtn";
+            this.inviaTempoAttesaBtn.Size = new System.Drawing.Size(50, 36);
+            this.inviaTempoAttesaBtn.TabIndex = 7;
+            this.inviaTempoAttesaBtn.Text = "Invia";
+            this.inviaTempoAttesaBtn.UseVisualStyleBackColor = false;
+            this.inviaTempoAttesaBtn.Visible = false;
+            this.inviaTempoAttesaBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1161, 692);
+            this.Controls.Add(this.inviaTempoAttesaBtn);
+            this.Controls.Add(this.tempoAttesaBox);
+            this.Controls.Add(this.tavoloSelLabel);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.listaOrdinazioni);
             this.Controls.Add(this.panel2);
@@ -142,7 +186,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tempoAttesaBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -156,6 +202,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel listaOrdinazioni;
         private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.Label tavoloSelLabel;
+        private System.Windows.Forms.NumericUpDown tempoAttesaBox;
+        private System.Windows.Forms.Button inviaTempoAttesaBtn;
     }
 }
 

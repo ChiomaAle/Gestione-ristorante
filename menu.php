@@ -8,11 +8,8 @@
 
     </head>
     <body>
-        <?php
-            $host = "localhost";
-            $connection = new mysqli($host, "user", "ciaone");
-            
-            $request = 'http://localhost/sitoRistorante/api/menu/getPietanze.php';
+        <?php            
+            $request = 'http://sitoristorante.ddns.net/api/menu/getPietanze.php';
             $response = file_get_contents($request);
             $json = json_decode($response, true);
         ?>

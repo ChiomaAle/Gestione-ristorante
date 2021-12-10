@@ -3,7 +3,7 @@
         private $host = 'localhost';
         private $nome = 'db_ristorante';
         private $usr = 'user';
-        private $psw = 'ciaone';
+        private $psw = '7DT$T3zk^srxE';
         private $conn;
 
         public function connect() {

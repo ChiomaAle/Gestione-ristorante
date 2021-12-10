@@ -20,6 +20,7 @@
             extract($row);
 
             $pietanza = array(
+                'id' => $id,
                 'nome' => $nomePietanza,
                 'desc' => $descrizione,
                 'prezzo' => $prezzo,

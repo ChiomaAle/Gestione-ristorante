@@ -126,3 +126,16 @@ body{
 .socialContainer > a > img{
     height: 100%;
 }
+
+.qtaPietanze{
+    display: flex;
+    flex-direction: down;
+    height: fit-content;
+    margin: auto;
+    border: none;
+    color:black;
+    margin-right: 0;
+}
+.qtaPietanze > input{
+    margin-left: 0.5rem;
+}

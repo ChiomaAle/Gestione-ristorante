@@ -8,7 +8,7 @@
         }
 
         public function getPietanze(){
-            $query = 'SELECT nomePietanza, descrizione, prezzo, idCategoria, immagine 
+            $query = 'SELECT id, nomePietanza, descrizione, prezzo, idCategoria, immagine 
                         FROM db_ristorante.'.$this->table.';';
 
             $output = $this->conn->prepare($query);

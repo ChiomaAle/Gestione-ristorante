@@ -39,6 +39,7 @@ namespace ProgettoRistorante {
             this.pannello.Name = "pannello";
             this.pannello.Size = new System.Drawing.Size(250, 550);
             this.pannello.TabIndex = 0;
+            this.pannello.Click += new System.EventHandler(this.pannello_Click);
             // 
             // listaPietanze
             // 
@@ -51,6 +52,8 @@ namespace ProgettoRistorante {
             this.listaPietanze.Size = new System.Drawing.Size(244, 457);
             this.listaPietanze.TabIndex = 2;
             this.listaPietanze.Text = "Pizza margherita - 2";
+            this.listaPietanze.Click += new System.EventHandler(this.listaPietanze_Click);
+            this.listaPietanze.TextChanged += new System.EventHandler(this.listaPietanze_TextChanged);
             // 
             // numTavoloLabel
             // 
@@ -62,6 +65,7 @@ namespace ProgettoRistorante {
             this.numTavoloLabel.Size = new System.Drawing.Size(108, 40);
             this.numTavoloLabel.TabIndex = 1;
             this.numTavoloLabel.Text = "Tav: 1";
+            this.numTavoloLabel.Click += new System.EventHandler(this.numTavoloLabel_Click);
             // 
             // completatoBtn
             // 
@@ -88,7 +92,7 @@ namespace ProgettoRistorante {
         }
 
         private void completatoBtn_Click(object sender, EventArgs e) {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://localhost/sitoRistorante/api/cucina/setPreparato.php"));
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setPreparato.php"));
             req.Method = "POST";
             req.ContentType = "applicatinon/json";
             string json = "{\"idOrdinazione\": " + orderId + "}";
@@ -102,6 +106,28 @@ namespace ProgettoRistorante {
 
             Thread.Sleep(200);
             ic.aggiornaPietanze();
+        }
+
+        private void pannello_Click(object sender, EventArgs e) {
+            selezioneTavolo();
+        }
+
+        private void listaPietanze_TextChanged(object sender, EventArgs e) {
+            
+        }
+
+        private void selezioneTavolo() {
+            string nTavolo = numTavoloLabel.Text;
+            int nTavoloIntero = Int32.Parse(nTavolo.Substring(nTavolo.Length - 1));
+            ic.aggiornaTavoloSelezionato(nTavoloIntero, orderId);
+        }
+
+        private void numTavoloLabel_Click(object sender, EventArgs e) {
+            selezioneTavolo();
+        }
+
+        private void listaPietanze_Click(object sender, EventArgs e) {
+            selezioneTavolo();
         }
     }
 }
