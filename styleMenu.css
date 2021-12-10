@@ -34,7 +34,7 @@ body{
     color: #ffffff;
     padding-top: 0.5rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
     height: 2.5rem;
     width: 11rem;
@@ -52,6 +52,7 @@ body{
 
 .titolo{
     text-align: center;
+    font-size: 6rem;
 }
 
 .categoriaContainer{
@@ -62,7 +63,8 @@ body{
 
 .categoria{
     padding-right: 3rem;
-    font-size: 1rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
 }
 .categoria > a{
     color: black;
@@ -83,7 +85,7 @@ body{
     display: flex;
     border-radius: 4px;
     padding: 3rem, 3rem, 3rem, 3rem;
-    width: 60%;
+    width: 80%;
     margin: auto;
 }
 
@@ -92,7 +94,7 @@ body{
     padding-left: 1rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
-    width: 10rem;
+    width: 20rem;
 }
 
 .sezioneContatti{
@@ -130,12 +132,90 @@ body{
 .qtaPietanze{
     display: flex;
     flex-direction: down;
-    height: fit-content;
+    width: fit-content;
     margin: auto;
     border: none;
     color:black;
     margin-right: 0;
+    font-size: 2rem;
 }
 .qtaPietanze > input{
     margin-left: 0.5rem;
+    border: none;
+    width: 5rem;
+    font-size: 2rem;
+    border-bottom: 1px solid #f64e24;
+    background: transparent;
+    outline: none;
+}
+
+input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 6rem;
+    background: #f64e24;
+    color: white;
+    font-size: 3rem;
+    border-radius: 4rem;
+    transition: all 500ms ease;
+    width: 40%;
+    display: block;
+    margin:auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    background: #fb3200;
+}
+
+.sezionePersone{
+    margin: auto;
+    margin-bottom: 6rem;
+}
+
+.personeOrdinanti{
+    color: #626262;
+    width: 15%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #f64e24;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    display: block;
+    margin: auto;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.descrizione{
+    font-size: 1.5rem;
+}
+
+.nTavolo{
+    margin: auto;
+    position: relative;
+    align-items: center;
+}
+
+.nTavolo a {
+    color: #ffffff;
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 4rem;
+    text-decoration: none;
+    height: 2.5rem;
+    width: 100%;
+    transition: background-color 300ms ease;
+    display: block;
+    margin: auto;
+}
+
+.topnavOrd {
+    width: 100%;
+    height: 5rem;
+    background-color: #ec5d39;
+    margin: 0;
 }

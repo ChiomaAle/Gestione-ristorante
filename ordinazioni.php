@@ -12,7 +12,7 @@
             $host = "localhost";
             $connection = new mysqli($host, "user", "ciaone");
             
-            $request = 'http://localhost/sitoRistorante/api/menu/getPietanze.php';
+            $request = 'http://localhost/api/menu/getPietanze.php';
             $response = file_get_contents($request);
             $json = json_decode($response, true);
 
@@ -24,8 +24,8 @@
             }
         ?>
 
-        <div class="topnav">
-            <div class="navElements">
+        <div class="topnavOrd">
+            <div class="nTavolo">
                 <a>Tavolo n° <?php echo $nTavolo;?></a>
             </div>
         </div>
@@ -54,7 +54,11 @@
             </div>
         </div>
 
-        <form>
+        <form action = "mandaOrdine.php" method="post">
+            <div class="sezionePersone">
+                <h1 class="intestazioneSezione">Per quante persone stai ordinando?</h1>
+                <input type="number" id="nPersone" value="1" class="personeOrdinanti">
+            </div>
             <div class="sezioneAntipasti" id="antipasti">
                 <h1 class="intestazioneSezione">Antipasti</h1>
                 <?php
@@ -73,7 +77,7 @@
                                     <a><?php echo $desc;?></a>
                                 </div>
                                 <div class ="qtaPietanze">
-                                    <label for="qtaPietanze"> Quantità </label>
+                                    <label for="qtaPietanze"> Qtà </label>
                                     <input type="number" id=<?php echo "qta_" . $id;?> value=0>
                                 </div>
                             </div>
@@ -101,7 +105,7 @@
                                     <a><?php echo $desc;?></a>
                                 </div>
                                 <div class ="qtaPietanze">
-                                    <label for="qtaPietanze"> Quantità </label>
+                                    <label for="qtaPietanze"> Qtà </label>
                                     <input type="number" id=<?php echo "qta_" . $id;?> value=0>
                                 </div>
                             </div>
@@ -129,7 +133,7 @@
                                     <a><?php echo $desc;?></a>
                                 </div>
                                 <div class ="qtaPietanze">
-                                    <label for="qtaPietanze"> Quantità </label>
+                                    <label for="qtaPietanze"> Qtà </label>
                                     <input type="number" id=<?php echo "qta_" . $id;?> value=0>
                                 </div>
                             </div>
@@ -157,7 +161,7 @@
                                     <a><?php echo $desc;?></a>
                                 </div>
                                 <div class ="qtaPietanze">
-                                    <label for="qtaPietanze"> Quantità </label>
+                                    <label for="qtaPietanze"> Qtà </label>
                                     <input type="number" id=<?php echo "qta_" . $id;?> value=0>
                                 </div>
                             </div>
@@ -185,7 +189,7 @@
                                     <a><?php echo $desc;?></a>
                                 </div>
                                 <div class ="qtaPietanze">
-                                    <label for="qtaPietanze"> Quantità: </label>
+                                    <label for="qtaPietanze"> Qtà: </label>
                                     <input type="number" id=<?php echo "qta_" . $id;?> value=0>
                                 </div>
                             </div>
@@ -194,31 +198,8 @@
                     }
                 ?>
             </div>
+
+            <input type="submit" value="Invia ordine">
         </form>
-        <div class="sezioneContatti">
-            <h1>Contatti</h1>
-            <div>
-                Potrete contattarci mediate i seguenti mezzi:
-                <ul class="listaContatti">
-                    <li>E-Mail: contact@nomeristorante.it</li>
-                    <li>Telefono: 0461 420690</li>
-                    <li>Indirizzo: via Sommarive 9, Povo (TN)</li>
-                </ul>
-            </div>
-            <div>
-                Oppure tramite i seguenti social network:
-                <div class="socialContainer">
-                    <a href="https://it-it.facebook.com/" target="_blank">
-                        <img class="icon" src="svg/facebook.svg">
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <img class="icon" src="svg/instagram.svg">
-                    </a>
-                    <a href="https://www.tripadvisor.it/" target="_blank">
-                        <img class="icon" src="svg/tripadvisor.svg">
-                    </a>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
