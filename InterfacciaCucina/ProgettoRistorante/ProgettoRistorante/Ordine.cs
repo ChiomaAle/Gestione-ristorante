@@ -22,10 +22,10 @@ namespace ProgettoRistorante {
         }
 
         private void InitializeComponent() {
-            this.pannello = new System.Windows.Forms.Panel();
-            this.listaPietanze = new System.Windows.Forms.RichTextBox();
-            this.numTavoloLabel = new System.Windows.Forms.Label();
-            this.completatoBtn = new System.Windows.Forms.Button();
+            this.pannello = new Panel();
+            this.listaPietanze = new RichTextBox();
+            this.numTavoloLabel = new Label();
+            this.completatoBtn = new Button();
             this.pannello.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,11 +60,12 @@ namespace ProgettoRistorante {
             this.numTavoloLabel.AutoSize = true;
             this.numTavoloLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTavoloLabel.ForeColor = System.Drawing.Color.White;
-            this.numTavoloLabel.Location = new System.Drawing.Point(75, 8);
+            this.numTavoloLabel.Location = new System.Drawing.Point(8, 8);
             this.numTavoloLabel.Name = "numTavoloLabel";
-            this.numTavoloLabel.Size = new System.Drawing.Size(108, 40);
+            this.numTavoloLabel.Size = new System.Drawing.Size(234, 40);
             this.numTavoloLabel.TabIndex = 1;
-            this.numTavoloLabel.Text = "Tav: 1";
+            this.numTavoloLabel.Text = "Tav: 1 Ord: 69";
+            this.numTavoloLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.numTavoloLabel.Click += new System.EventHandler(this.numTavoloLabel_Click);
             // 
             // completatoBtn
@@ -94,7 +95,7 @@ namespace ProgettoRistorante {
         private void completatoBtn_Click(object sender, EventArgs e) {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setPreparato.php"));
             req.Method = "POST";
-            req.ContentType = "applicatinon/json";
+            req.ContentType = "application/json";
             string json = "{\"idOrdinazione\": " + orderId + "}";
             byte[] postBytes = Encoding.ASCII.GetBytes(json);
             req.ContentLength = postBytes.Length;
@@ -103,6 +104,7 @@ namespace ProgettoRistorante {
             postStream.Write(postBytes, 0, json.Length);
             postStream.Flush();
             postStream.Close();
+            req.Abort();
 
             Thread.Sleep(200);
             ic.aggiornaPietanze();

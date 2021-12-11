@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -17,7 +18,7 @@ namespace ProgettoRistorante {
         private Point lastLocation;
         public static int TAVOLO_SELEZIONATO = 0;
         private string orderIdSelezionato;
-        HttpWebRequest richiestaApi;
+        
 
         public Form1() {
             InitializeComponent();
@@ -58,7 +59,7 @@ namespace ProgettoRistorante {
 
         public void aggiornaPietanze() {
             listaOrdinazioni.Controls.Clear();
-
+            HttpWebRequest richiestaApi;
             richiestaApi = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/getOrdinazioni.php"));
             richiestaApi.Method = "GET";
 
@@ -70,19 +71,21 @@ namespace ProgettoRistorante {
                 json = reader.ReadToEnd();
             }
 
-            if(!json.Contains("Nessuna ordinazione")) {
+            rispostaApi.Close();
+
+            if (!json.Contains("Nessuna ordinazione")) {
                 List<PietanzaOrdinata> pietanze = JsonConvert.DeserializeObject<List<PietanzaOrdinata>>(json);
                 foreach (PietanzaOrdinata pietanza in pietanze) {
                     if (listaOrdinazioni.Controls.Count == 0) {
                         Ordine ordine = new Ordine(this);
-                        ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo;
+                        ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione;
                         ordine.listaPietanze.Text = pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                         ordine.orderId = pietanza.idOrdinazione;
                         listaOrdinazioni.Controls.Add(ordine);
                     } else {
                         bool inserito = false;
                         foreach (Ordine ord in listaOrdinazioni.Controls) {
-                            if (ord.numTavoloLabel.Text == "Tav: " + pietanza.idTavolo) {
+                            if (ord.numTavoloLabel.Text == "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione) {
                                 ord.listaPietanze.Text += pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                                 ord.orderId = pietanza.idOrdinazione;
                                 inserito = true;
@@ -91,7 +94,7 @@ namespace ProgettoRistorante {
 
                         if (!inserito) {
                             Ordine ordine = new Ordine(this);
-                            ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo;
+                            ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione;
                             ordine.listaPietanze.Text = pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                             ordine.orderId = pietanza.idOrdinazione;
                             listaOrdinazioni.Controls.Add(ordine);
@@ -118,7 +121,7 @@ namespace ProgettoRistorante {
         private void button1_Click(object sender, EventArgs e) {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setTempoAttesa.php"));
             req.Method = "POST";
-            req.ContentType = "applicatinon/json";
+            req.ContentType = "application/json";
             string json = "{\"idOrdinazione\": " + orderIdSelezionato + "," +
                 "\n\"tempoAttesa\": " + tempoAttesaBox.Value + "}";
             byte[] postBytes = Encoding.ASCII.GetBytes(json);
@@ -128,6 +131,8 @@ namespace ProgettoRistorante {
             postStream.Write(postBytes, 0, json.Length);
             postStream.Flush();
             postStream.Close();
+
+            req.Abort();
         }
     }
 }

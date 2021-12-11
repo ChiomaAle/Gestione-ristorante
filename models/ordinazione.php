@@ -17,6 +17,48 @@
             return $output;
         }
 
+        public function aggiungiOrdine($nTavolo, $nPersone, $listaPietanze, $quantita){
+            $query = 'INSERT INTO ordinazioni (personeOrdinanti, idTavolo, preparato, tempoAttesa)
+                        VALUES (' . $nPersone . ' , ' . $nTavolo . ', 0, 0);';
+
+            $output = $this->conn->prepare($query);
+
+            if(!$output->execute()){
+                print("Impossibile inserire l'ordinazione! " . $output->error);
+            }
+
+            $query = 'SELECT idOrdinazione
+                        FROM ordinazioni
+                        ORDER BY idOrdinazione DESC;';
+
+            $output = $this->conn->prepare($query);
+            
+            if(!$output->execute()){
+                print("Impossibile estrarre l'ultima ordinazione! " . $output->error);
+            }
+
+            $row = $output->fetch(PDO::FETCH_ASSOC);
+            extract($row);
+            
+            $i = 0;
+            foreach($listaPietanze as $pietanza) {
+                if($quantita[i] > 0){
+                    $query = 'INSERT INTO pietanzeordinate (idOrdinazione, idPietanza, quantita)
+                        VALUES (' . $idOrdinazione . ' , ' . $pietanza . ' , ' . $quantita[i] . ');';
+                    
+                    $output = $this->conn->prepare($query);
+
+                    if(!$output->execute()){
+                        print("Impossibile inserire le pietanze! " . $output->error);
+                    }
+                }
+                
+                $i++;
+            }
+
+            print("Ordine aggiunto!");
+        }
+
         public function setTempoAttesa($tempoAttesa, $idOrdinazione){
             $query = 'UPDATE ordinazioni SET tempoAttesa = ' . $tempoAttesa . ' WHERE idOrdinazione = ' . $idOrdinazione . ';';
 
