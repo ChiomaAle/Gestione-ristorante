@@ -38,7 +38,7 @@
                 $context = stream_context_create($options);
                 $result = file_get_contents($url, false, $context);
 
-                //redirect to seccess
+                header("Location:http://sitoristorante.ddns.net/ordineMandato.html");
             }
 
             $request = 'http://localhost/api/menu/getPietanze.php';
