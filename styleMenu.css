@@ -101,7 +101,7 @@ body{
     margin: auto;
     margin-top: 3rem;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     color: black;
     width: max-content;
 }
@@ -218,4 +218,9 @@ input[type="submit"]:hover{
     height: 5rem;
     background-color: #ec5d39;
     margin: 0;
+}
+
+.sottoTitolo{
+    text-align: center;
+    font-size: 2rem;
 }

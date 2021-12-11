@@ -6,7 +6,7 @@
 
     include_once '../../config/Database.php';
     include_once '../../models/ordinazione.php';
-     
+
     $database = new Database();
     $db = $database->connect();
 
@@ -16,8 +16,7 @@
     $nTavolo = $dati->nTavolo;
     $nPersone = $dati->nPersone;
     $listaPietanze = $dati->listaPietanze;
-    $quantita = $dati->quantita;
 
-    $ord->aggiungiOrdine($nTavolo, $nPersone, $listaPietanze, $quantita); 
-    echo json_encode(array('message' => 'Ho fatto qualcosa!'));     
+    $ord->aggiungiOrdine($nTavolo, $nPersone, $listaPietanze);
+    echo json_encode(array('message' => 'Ho fatto qualcosa!'));  
 ?>

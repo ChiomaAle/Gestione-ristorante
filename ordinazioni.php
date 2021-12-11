@@ -9,9 +9,38 @@
     </head>
     <body>
         <?php
-            $host = "localhost";
-            $connection = new mysqli($host, "user", "ciaone");
-            
+            if(isSet($_POST['nPersone'])){
+                $nPersone = $_POST['nPersone'];
+                $nTavolo = $_POST['nTavolo'];
+
+                $json = ("{\"nTavolo\": " . $nTavolo . ",\"nPersone\": " . $nPersone . ", \"listaPietanze\": [");
+
+                unset($_POST['nPersone']);
+                unset($_POST['nTavolo']);
+                
+                foreach($_POST as $id => $qta){
+                    $json = ($json . "{\"idPietanza\": " . $id . ",");
+                    $json = ($json . "\"quantita\": " . $qta . "},");
+                }
+
+                $json = substr($json, 0, -1);
+                $json = $json . "]}";
+
+                $url = 'http://sitoristorante.ddns.net/api/cucina/aggiungiOrdine.php';
+                $options = array(
+                    'http' => array(
+                        'header'  => "Content-type: application/json\r\n",
+                        'method'  => 'POST',
+                        'content' => $json
+                    )
+                );
+
+                $context = stream_context_create($options);
+                $result = file_get_contents($url, false, $context);
+
+                //redirect to seccess
+            }
+
             $request = 'http://localhost/api/menu/getPietanze.php';
             $response = file_get_contents($request);
             $json = json_decode($response, true);
@@ -54,10 +83,11 @@
             </div>
         </div>
 
-        <form action = "mandaOrdine.php" method="post">
+        <form onSubmit = "ordinazioni.php" method="POST">
             <div class="sezionePersone">
                 <h1 class="intestazioneSezione">Per quante persone stai ordinando?</h1>
-                <input type="number" id="nPersone" value="1" class="personeOrdinanti">
+                <input type="number" name="nPersone" value=1 min=1 class="personeOrdinanti">
+                <input type="hidden" name="nTavolo" value=<?php echo($nTavolo);?>>
             </div>
             <div class="sezioneAntipasti" id="antipasti">
                 <h1 class="intestazioneSezione">Antipasti</h1>
@@ -78,7 +108,7 @@
                                 </div>
                                 <div class ="qtaPietanze">
                                     <label for="qtaPietanze"> Qtà </label>
-                                    <input type="number" id=<?php echo "qta_" . $id;?> value=0>
+                                    <input type="number" name=<?php echo $id;?> min=0 max=50 value=0>
                                 </div>
                             </div>
                             <?php
@@ -106,7 +136,7 @@
                                 </div>
                                 <div class ="qtaPietanze">
                                     <label for="qtaPietanze"> Qtà </label>
-                                    <input type="number" id=<?php echo "qta_" . $id;?> value=0>
+                                    <input type="number" name=<?php echo $id;?> min=0 max=50 value=0>
                                 </div>
                             </div>
                             <?php
@@ -134,7 +164,7 @@
                                 </div>
                                 <div class ="qtaPietanze">
                                     <label for="qtaPietanze"> Qtà </label>
-                                    <input type="number" id=<?php echo "qta_" . $id;?> value=0>
+                                    <input type="number" name=<?php echo $id;?> min=0 max=50 value=0>
                                 </div>
                             </div>
                             <?php
@@ -162,7 +192,7 @@
                                 </div>
                                 <div class ="qtaPietanze">
                                     <label for="qtaPietanze"> Qtà </label>
-                                    <input type="number" id=<?php echo "qta_" . $id;?> value=0>
+                                    <input type="number" name=<?php echo $id;?> min=0 max=50 value=0>
                                 </div>
                             </div>
                             <?php
@@ -190,7 +220,7 @@
                                 </div>
                                 <div class ="qtaPietanze">
                                     <label for="qtaPietanze"> Qtà: </label>
-                                    <input type="number" id=<?php echo "qta_" . $id;?> value=0>
+                                    <input type="number" name=<?php echo $id;?> min=0 max=50 value=0>
                                 </div>
                             </div>
                             <?php

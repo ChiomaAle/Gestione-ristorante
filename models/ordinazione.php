@@ -17,7 +17,7 @@
             return $output;
         }
 
-        public function aggiungiOrdine($nTavolo, $nPersone, $listaPietanze, $quantita){
+        public function aggiungiOrdine($nTavolo, $nPersone, $listaPietanze){
             $query = 'INSERT INTO ordinazioni (personeOrdinanti, idTavolo, preparato, tempoAttesa)
                         VALUES (' . $nPersone . ' , ' . $nTavolo . ', 0, 0);';
 
@@ -39,12 +39,14 @@
 
             $row = $output->fetch(PDO::FETCH_ASSOC);
             extract($row);
-            
-            $i = 0;
+
             foreach($listaPietanze as $pietanza) {
-                if($quantita[i] > 0){
+                $quantita = $pietanza->quantita;
+                $idPietanza = $pietanza->idPietanza;
+
+                if($quantita > 0){
                     $query = 'INSERT INTO pietanzeordinate (idOrdinazione, idPietanza, quantita)
-                        VALUES (' . $idOrdinazione . ' , ' . $pietanza . ' , ' . $quantita[i] . ');';
+                        VALUES (' . $idOrdinazione . ' , ' . $idPietanza . ' , ' . $quantita . ');';
                     
                     $output = $this->conn->prepare($query);
 
@@ -52,11 +54,7 @@
                         print("Impossibile inserire le pietanze! " . $output->error);
                     }
                 }
-                
-                $i++;
             }
-
-            print("Ordine aggiunto!");
         }
 
         public function setTempoAttesa($tempoAttesa, $idOrdinazione){
