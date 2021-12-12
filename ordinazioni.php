@@ -26,7 +26,7 @@
                 $json = substr($json, 0, -1);
                 $json = $json . "]}";
 
-                $url = 'http://sitoristorante.ddns.net/api/cucina/aggiungiOrdine.php';
+                $url = 'https://sitoristorante.ddns.net/api/cucina/aggiungiOrdine.php';
                 $options = array(
                     'http' => array(
                         'header'  => "Content-type: application/json\r\n",
@@ -38,10 +38,10 @@
                 $context = stream_context_create($options);
                 $result = file_get_contents($url, false, $context);
 
-                header("Location:http://sitoristorante.ddns.net/ordineMandato.html");
+                header("Location:https://sitoristorante.ddns.net/ordineMandato.html");
             }
 
-            $request = 'http://localhost/api/menu/getPietanze.php';
+            $request = 'https://sitoristorante.ddns.net/api/menu/getPietanze.php';
             $response = file_get_contents($request);
             $json = json_decode($response, true);
 
