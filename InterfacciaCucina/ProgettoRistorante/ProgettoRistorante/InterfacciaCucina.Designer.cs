@@ -133,11 +133,11 @@
             this.tavoloSelLabel.AutoSize = true;
             this.tavoloSelLabel.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tavoloSelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(11)))));
-            this.tavoloSelLabel.Location = new System.Drawing.Point(643, 634);
+            this.tavoloSelLabel.Location = new System.Drawing.Point(598, 634);
             this.tavoloSelLabel.Name = "tavoloSelLabel";
-            this.tavoloSelLabel.Size = new System.Drawing.Size(329, 36);
+            this.tavoloSelLabel.Size = new System.Drawing.Size(370, 36);
             this.tavoloSelLabel.TabIndex = 5;
-            this.tavoloSelLabel.Text = "Tempo attesa tavolo: 1";
+            this.tavoloSelLabel.Text = "Tempo attesa ordine: 400";
             this.tavoloSelLabel.Visible = false;
             // 
             // tempoAttesaBox

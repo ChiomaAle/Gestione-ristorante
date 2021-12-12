@@ -12,6 +12,7 @@ namespace ProgettoRistorante {
     internal class Ordine : UserControl{
         private Panel pannello;
         public string orderId;
+        public int tableId;
         private Button completatoBtn;
         public Label numTavoloLabel;
         public RichTextBox listaPietanze;
@@ -93,7 +94,7 @@ namespace ProgettoRistorante {
         }
 
         private void completatoBtn_Click(object sender, EventArgs e) {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setPreparato.php"));
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("https://sitoristorante.ddns.net/api/cucina/setPreparato.php"));
             req.Method = "POST";
             req.ContentType = "application/json";
             string json = "{\"idOrdinazione\": " + orderId + "}";
@@ -119,8 +120,7 @@ namespace ProgettoRistorante {
         }
 
         private void selezioneTavolo() {
-            string nTavolo = numTavoloLabel.Text;
-            int nTavoloIntero = Int32.Parse(nTavolo.Substring(nTavolo.Length - 1));
+            int nTavoloIntero = tableId;
             ic.aggiornaTavoloSelezionato(nTavoloIntero, orderId);
         }
 

@@ -60,7 +60,7 @@ namespace ProgettoRistorante {
         public void aggiornaPietanze() {
             listaOrdinazioni.Controls.Clear();
             HttpWebRequest richiestaApi;
-            richiestaApi = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/getOrdinazioni.php"));
+            richiestaApi = (HttpWebRequest)WebRequest.Create(string.Format("https://sitoristorante.ddns.net/api/cucina/getOrdinazioni.php"));
             richiestaApi.Method = "GET";
 
             HttpWebResponse rispostaApi = (HttpWebResponse)richiestaApi.GetResponse();
@@ -79,6 +79,7 @@ namespace ProgettoRistorante {
                     if (listaOrdinazioni.Controls.Count == 0) {
                         Ordine ordine = new Ordine(this);
                         ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione;
+                        ordine.tableId = Int32.Parse(pietanza.idTavolo);
                         ordine.listaPietanze.Text = pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                         ordine.orderId = pietanza.idOrdinazione;
                         listaOrdinazioni.Controls.Add(ordine);
@@ -88,6 +89,7 @@ namespace ProgettoRistorante {
                             if (ord.numTavoloLabel.Text == "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione) {
                                 ord.listaPietanze.Text += pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                                 ord.orderId = pietanza.idOrdinazione;
+                                ord.tableId = Int32.Parse(pietanza.idTavolo);
                                 inserito = true;
                             }
                         }
@@ -97,6 +99,7 @@ namespace ProgettoRistorante {
                             ordine.numTavoloLabel.Text = "Tav: " + pietanza.idTavolo + " Ord: " + pietanza.idOrdinazione;
                             ordine.listaPietanze.Text = pietanza.nomePietanza + " - " + pietanza.quantita + "\n";
                             ordine.orderId = pietanza.idOrdinazione;
+                            ordine.tableId = Int32.Parse(pietanza.idTavolo);
                             listaOrdinazioni.Controls.Add(ordine);
                         }
                     }
@@ -115,11 +118,11 @@ namespace ProgettoRistorante {
             tempoAttesaBox.Visible = true;
             inviaTempoAttesaBtn.Visible = true;
             tempoAttesaBox.Visible = true;
-            tavoloSelLabel.Text = "Tempo attesa tavolo: " + nTavolo;
+            tavoloSelLabel.Text = "Tempo attesa ordine: " + orderId;
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("http://sitoristorante.ddns.net/api/cucina/setTempoAttesa.php"));
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("https://sitoristorante.ddns.net/api/cucina/setTempoAttesa.php"));
             req.Method = "POST";
             req.ContentType = "application/json";
             string json = "{\"idOrdinazione\": " + orderIdSelezionato + "," +
