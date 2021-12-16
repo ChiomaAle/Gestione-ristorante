@@ -4,10 +4,39 @@
         <title>Ristorante Ristorantoso</title>
         <meta name="viewport" content="width-device-width, initial-scale-1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="stylePrenotazioni.css">
-
+        <link rel="stylesheet" href="css/stylePrenotazioni.css">
     </head>
     <body>
+        <?php
+            if(isSet($_POST['nome'])){
+                $nome = $_POST['nome'];
+                $email = $_POST['email'];
+                $numPosti = $_POST['posti'];
+
+                $dataOra = $_POST['data'];
+                $dataOra = str_replace("T"," ", $dataOra);
+                $dataOra = $dataOra . ":00";
+
+                $json = ("{\"nome\": \"" . $nome . "\",\"email\": \"" . $email . "\", \"numPosti\": \"" . $numPosti . "\", \"dataOra\": \"" . $dataOra . "\"}");
+
+                $url = 'https://sitoristorante.ddns.net/api/prenotazioni/aggiungiPrenotazione.php';
+                $options = array(
+                    'http' => array(
+                        'header'  => "Content-type: application/json\r\n",
+                        'method'  => 'POST',
+                        'content' => $json
+                    )
+                );
+        
+                $context = stream_context_create($options);
+                $result = file_get_contents($url, false, $context);
+
+                $json = json_decode($result, true);
+                $id = $json['id'];
+
+                header("Location:https://sitoristorante.ddns.net/prenotazioneEffettuata.php?id=".$id);
+            }
+        ?>
         <div class="topnav">
             <div class="navElements">
                 <a href="index.html">Home</a>
@@ -23,11 +52,11 @@
         </div>
 
         <div class="sezioneBottoni">
-           <a href="gestionePrenotazioni.php" class="btn-rounded">Hai già una prenotazione?</a> 
+           <a href="cercaPrenotazioni.php" class="btn-rounded">Hai già una prenotazione?</a> 
         </div>
         
         <div class="sezioneDati">
-        <form action="creaPrenotazione.php" method="POST">
+        <form onSubmit="prenotazioni.php" method="POST">
                 <input type="text" name="nome" placeholder="Nome e cognome" required>
                 <input type="email" name="email" placeholder="Indirizzo email" required>
                 <input type="number" name="posti" placeholder="Numero di posti" min="1" max="30" required>

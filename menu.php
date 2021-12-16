@@ -4,7 +4,7 @@
         <title>Ristorante Ristorantoso</title>
         <meta name="viewport" content="width-device-width, initial-scale-1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="styleMenu.css">
+        <link rel="stylesheet" href="css/styleMenu.css">
 
     </head>
     <body>
@@ -175,13 +175,13 @@
                 Oppure tramite i seguenti social network:
                 <div class="socialContainer">
                     <a href="https://it-it.facebook.com/" target="_blank">
-                        <img class="icon" src="svg/facebook.svg">
+                        <img class="icon" src="img/svg/facebook.svg">
                     </a>
                     <a href="https://www.instagram.com/" target="_blank">
-                        <img class="icon" src="svg/instagram.svg">
+                        <img class="icon" src="img/svg/instagram.svg">
                     </a>
                     <a href="https://www.tripadvisor.it/" target="_blank">
-                        <img class="icon" src="svg/tripadvisor.svg">
+                        <img class="icon" src="img/svg/tripadvisor.svg">
                     </a>
                 </div>
             </div>
