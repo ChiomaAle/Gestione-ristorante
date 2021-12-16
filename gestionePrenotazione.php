@@ -48,7 +48,7 @@
                     $id = $_POST['id'];
                     $json = ("{\"id\": \"$id\"}");
 
-                    $url = 'https://sitoristorante.ddns.net/api/prenotazioni/cancellaPrenotazione.php?del=1';
+                    $url = 'https://sitoristorante.ddns.net/api/prenotazioni/cancellaPrenotazione.php';
                     $options = array(
                         'http' => array(
                             'header'  => "Content-type: application/json\r\n",

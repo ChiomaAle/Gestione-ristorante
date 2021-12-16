@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-            if(!isset($_GET["del"])){
+            if(isset($_GET["id"])){
                 $id = $_GET["id"];
         ?>
                 <div class="titoloPagina">
